@@ -150,12 +150,12 @@ export default function App() {
           I'm a Full Stack Developer specializing in building exceptional, human-centered products.
         </p>
         <div className="mt-10 flex gap-4">
-          <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="px-8 py-4 bg-slate-900 dark:bg-white dark:text-slate-900 text-white rounded-full font-bold">
+          <a href="#projects"><motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="px-8 py-4 bg-slate-900 dark:bg-white dark:text-slate-900 text-white rounded-full font-bold">
             View Work
-          </motion.button>
-          <motion.button whileHover={{ scale: 1.05 }} className="px-8 py-4 border border-gray-300 dark:border-white/10 rounded-full font-medium">
+          </motion.button></a>
+          <a href="#contact"><motion.button whileHover={{ scale: 1.05 }} className="px-8 py-4 border border-gray-300 dark:border-white/10 rounded-full font-medium">
             Contact Me
-          </motion.button>
+          </motion.button></a>
         </div>
         <div className="absolute bottom-10 animate-bounce text-2xl"><HiOutlineChevronDown /></div>
       </Section>
