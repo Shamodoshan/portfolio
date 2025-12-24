@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { HiMoon, HiSun, HiOutlineChevronDown, HiExternalLink } from 'react-icons/hi';
 import { FaGithub, FaLinkedin, FaTwitter, FaCode, FaServer, FaLayerGroup } from 'react-icons/fa';
+import portfolioImage from './assets/portfolio.png';
+import stumanagementImage from './assets/stumanagement.png';
 
 // --- Components ---
 
@@ -9,7 +11,7 @@ const Navbar = ({ darkMode, toggleTheme }) => (
   <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-5xl">
     <div className="backdrop-blur-xl bg-white/70 dark:bg-slate-900/60 border border-gray-200 dark:border-white/10 rounded-full px-6 py-3 flex justify-between items-center shadow-lg">
       <a href="#home" className="text-xl font-bold tracking-tighter dark:text-white">
-        SHAMOD  OSHAN<span className="text-purple-500">.</span>
+        SHAMOD OSHAN<span className="text-purple-500">.</span>
       </a>
       <div className="hidden md:flex gap-8 text-sm font-medium dark:text-gray-300">
         {['About', 'Skills', 'Projects', 'Contact'].map((item) => (
@@ -40,6 +42,7 @@ const Section = ({ id, children, className }) => (
     {children}
   </motion.section>
 );
+
 const ProjectCard = ({ project }) => {
   return (
     <motion.div
@@ -48,26 +51,25 @@ const ProjectCard = ({ project }) => {
     >
       <div className={`h-64 bg-gradient-to-tr ${project.gradient} relative overflow-hidden`}>
         <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition duration-500"></div>
-
-        {/* The Animated "Screenshot" mockup */}
         <motion.div
-          className="absolute -bottom-10 left-10 right-10 h-full bg-white dark:bg-slate-800 rounded-t-xl shadow-2xl p-4"
+          className="absolute -bottom-10 left-10 right-10 h-full bg-white dark:bg-slate-800 rounded-t-xl shadow-2xl overflow-hidden"
           initial={{ y: 40 }}
           whileHover={{ y: 16 }}
           transition={{ duration: 0.4 }}
         >
-          <div className="w-full h-full bg-gray-100 dark:bg-slate-700 rounded-lg flex items-center justify-center text-gray-400 text-sm">
-            App Screenshot
-          </div>
+          <img
+            src={project.image}
+            alt={project.title}
+            className="w-full h-full object-cover object-top"
+          />
         </motion.div>
       </div>
-
       <div className="p-8">
         <div className="flex justify-between items-start mb-4">
           <h3 className="text-2xl font-bold dark:text-white group-hover:text-purple-500 transition">{project.title}</h3>
           <div className="flex gap-3 text-gray-400">
-            <a href="#" className="hover:text-purple-500 transition"><FaGithub size={20} /></a>
-            <a href="#" className="hover:text-purple-500 transition"><HiExternalLink size={22} /></a>
+            <a href="https://github.com/Shamodoshan?tab=repositories" className="hover:text-purple-500 transition"><FaGithub size={20} /></a>
+            <a href="https://github.com/Shamodoshan?tab=repositories" className="hover:text-purple-500 transition"><HiExternalLink size={22} /></a>
           </div>
         </div>
         <p className="text-gray-600 dark:text-gray-400 mb-6 line-clamp-2">
@@ -89,11 +91,43 @@ const ProjectCard = ({ project }) => {
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(true);
+  const [result, setResult] = useState("");
 
   useEffect(() => {
     if (darkMode) document.documentElement.classList.add('dark');
     else document.documentElement.classList.remove('dark');
   }, [darkMode]);
+
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    setResult("Sending....");
+    const formData = new FormData(event.target);
+
+    // Web3Forms Logic
+    formData.append("access_key", "8a96b123-f490-469d-9196-bf72bc72abe1");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setResult("Message Sent Successfully! ✅");
+        event.target.reset();
+      } else {
+        console.log("Error", data);
+        setResult(data.message);
+      }
+    } catch (error) {
+      setResult("Something went wrong. Please try again.");
+    }
+
+    // Clear message after 5 seconds
+    setTimeout(() => setResult(""), 5000);
+  };
 
   return (
     <div className="bg-gray-50 dark:bg-[#0f172a] text-slate-800 dark:text-slate-300 transition-colors duration-500 font-sans selection:bg-purple-500 selection:text-white">
@@ -108,7 +142,6 @@ export default function App() {
 
       {/* Hero Section */}
       <Section id="home" className="relative text-center">
-
         <h1 className="text-6xl md:text-8xl font-bold tracking-tight leading-tight dark:text-white">
           Building digital <br />
           <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">experiences</span> that matter.
@@ -154,9 +187,9 @@ export default function App() {
         <h2 className="text-4xl md:text-6xl font-bold mb-16 dark:text-white">My Arsenal</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl">
           {[
-            { title: 'Frontend', icon: <FaCode />, skills: ['Html', 'Css', 'Java script', 'React', 'Tailwind', 'boostrap'], color: 'text-blue-400' },
-            { title: 'Backend', icon: <FaServer />, skills: ['Node.js', 'PostgreSQL', 'Mysql', 'Python'], color: 'text-green-400' },
-            { title: 'DevOps', icon: <FaLayerGroup />, skills: ['Figma', 'Git', 'Github'], color: 'text-purple-400' }
+            { title: 'Frontend', icon: <FaCode />, skills: ['Html', 'Css', 'JavaScript', 'React', 'Tailwind', 'Bootstrap'], color: 'text-blue-400' },
+            { title: 'Backend', icon: <FaServer />, skills: ['Node.js', 'PostgreSQL', 'MySQL', 'Python'], color: 'text-green-400' },
+            { title: 'DevOps', icon: <FaLayerGroup />, skills: ['Figma', 'Git', 'GitHub'], color: 'text-purple-400' }
           ].map((stack, i) => (
             <motion.div
               key={i}
@@ -181,24 +214,26 @@ export default function App() {
               <h2 className="text-4xl md:text-6xl font-bold mb-4 dark:text-white">Featured Work</h2>
               <p className="text-gray-500 dark:text-gray-400 max-w-md">A selection of projects that showcase my passion for design and coding.</p>
             </div>
-            <a href="#" className="text-purple-500 font-semibold hover:text-purple-400 transition flex items-center gap-2 mb-2">
+            <a href="https://github.com/Shamodoshan?tab=repositories" className="text-purple-500 font-semibold hover:text-purple-400 transition flex items-center gap-2 mb-2">
               View All Projects <HiExternalLink />
             </a>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             <ProjectCard project={{
-              title: "portfolio website",
-              description: "A comprehensive dashboard for monitoring business metrics with real-time data visualization.",
+              title: "Portfolio Website",
+              description: "A modern developer portfolio showcasing projects, skills and experience with a clean UI.",
               tags: ["React", "Tailwind"],
               gradient: "from-blue-500 to-purple-500",
+              image: portfolioImage,
             }} />
 
             <ProjectCard project={{
-              title: "E-Commerce System",
-              description: "Full-featured shopping platform with Stripe integration, admin dashboard, and inventory management.",
-              tags: ["Next.js", "Stripe", "Node.js"],
+              title: "Student Management System",
+              description: "Student management system with CRUD features and a user-friendly interface.",
+              tags: ["Laravel", "Bootstrap"],
               gradient: "from-emerald-500 to-teal-900",
+              image: stumanagementImage,
             }} />
           </div>
         </div>
@@ -209,14 +244,23 @@ export default function App() {
         <div className="max-w-4xl w-full bg-white dark:bg-slate-900 border border-gray-200 dark:border-white/10 rounded-[3rem] p-10 md:p-20 text-center shadow-2xl">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 dark:text-white">Let's build something <span className="text-purple-500">amazing</span></h2>
           <p className="mb-12 text-gray-500">Currently open for new opportunities and interesting projects.</p>
-          <form className="max-w-md mx-auto space-y-4">
-            <input type="text" placeholder="Name" className="w-full p-4 rounded-2xl bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 outline-none focus:border-purple-500 transition" />
-            <input type="email" placeholder="Email" className="w-full p-4 rounded-2xl bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 outline-none focus:border-purple-500 transition" />
-            <textarea placeholder="Message" rows="4" className="w-full p-4 rounded-2xl bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 outline-none focus:border-purple-500 transition" />
+          <form className="max-w-md mx-auto space-y-4" onSubmit={onSubmit}>
+            <input required type="text" placeholder="Name" name='name' className="w-full p-4 rounded-2xl bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 outline-none focus:border-purple-500 transition" />
+            <input required type="email" placeholder="Email" name='email' className="w-full p-4 rounded-2xl bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 outline-none focus:border-purple-500 transition" />
+            <textarea required placeholder="Message" rows="4" name='message' className="w-full p-4 rounded-2xl bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 outline-none focus:border-purple-500 transition" />
+
+            {/* Feedback Message Display */}
+            <div className="min-h-[24px]">
+              <p className={`text-sm font-medium ${result.includes('Success') ? 'text-green-500' : 'text-purple-500'}`}>
+                {result}
+              </p>
+            </div>
+
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className="w-full py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-2xl shadow-lg shadow-purple-500/20"
+              type='submit'
             >
               Send Message
             </motion.button>
