@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { HiMoon, HiSun, HiOutlineChevronDown, HiExternalLink } from 'react-icons/hi';
-import { FaGithub, FaLinkedin, FaTwitter, FaCode, FaServer, FaLayerGroup } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaTwitter, FaCode, FaServer, FaLayerGroup, FaInstagram, FaFacebook } from 'react-icons/fa';
 import portfolioImage from './assets/portfolio.png';
 import stumanagementImage from './assets/stumanagement.png';
+import profileImage from './assets/profile.png';
 
 // --- Components ---
 
@@ -162,22 +163,44 @@ export default function App() {
 
       {/* About Section */}
       <Section id="about">
-        <div className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-4xl md:text-6xl font-bold mb-6 dark:text-white">About Me</h2>
-            <div className="h-1 w-20 bg-purple-500 rounded-full mb-8"></div>
-            <p className="text-lg text-gray-500 dark:text-gray-400 leading-relaxed">
-              I’m a passionate Full Stack Developer focused on building clean, user-friendly applications.
-              <br />
-              I love modern stacks like React, Node.js, Tailwind, and cloud platforms.
-            </p>
+        <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+          {/* Left Column - About Me and Experience */}
+          <div className="lg:col-span-2 space-y-8">
+            <div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 dark:text-white">About Me</h2>
+              <div className="h-1 w-20 bg-purple-500 rounded-full mb-6"></div>
+              <p className="text-lg text-gray-500 dark:text-gray-400 leading-relaxed">
+                I'm a passionate Full Stack Developer focused on building clean, user-friendly applications.
+                <br /><br />
+                I love modern stacks like React, Node.js, Tailwind, and cloud platforms.
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-2 gap-4">
+              <div className="bg-gradient-to-br from-blue-600 to-purple-600 p-6 rounded-2xl text-white shadow-lg">
+                <div className="text-4xl font-bold mb-1">10+</div>
+                <div className="text-xs uppercase tracking-widest opacity-80">Projects</div>
+              </div>
+              <div className="bg-gradient-to-br from-purple-600 to-indigo-600 p-6 rounded-2xl text-white shadow-lg">
+                <div className="text-4xl font-bold mb-1">1+</div>
+                <div className="text-xs uppercase tracking-widest opacity-80">Years Experience</div>
+              </div>
+            </div>
           </div>
-          <div className="bg-gradient-to-br from-blue-600 to-purple-600 p-12 rounded-3xl text-white shadow-2xl">
-            <div className="text-5xl font-bold mb-2">10+</div>
-            <div className="uppercase tracking-widest text-sm opacity-80 mb-8">Projects Completed</div>
-            <div className="h-px bg-white/20 mb-8" />
-            <div className="text-5xl font-bold mb-2">1+</div>
-            <div className="uppercase tracking-widest text-sm opacity-80">Years Experience</div>
+          
+          {/* Right Column - Photo */}
+          <div className="flex justify-center lg:justify-end">
+            <div className="relative w-64 h-64 lg:w-72 lg:h-72 xl:w-80 xl:h-80 rounded-full overflow-hidden border-4 border-purple-500">
+              <img 
+                src={profileImage} 
+                alt="Shamod Oshan"
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = 'https://via.placeholder.com/400x400?text=Your+Photo';
+                }}
+              />
+            </div>
           </div>
         </div>
       </Section>
@@ -268,8 +291,48 @@ export default function App() {
         </div>
       </Section>
 
-      <footer className="py-10 text-center opacity-50 text-sm">
-        © 2025 Shamod Oshan.
+      <footer className="py-10 text-center">
+        <div className="flex justify-center space-x-6 mb-6">
+          <a 
+            href="https://github.com/yourusername" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-white transition-colors"
+            aria-label="GitHub"
+          >
+            <FaGithub className="w-6 h-6" />
+          </a>
+          <a 
+            href="https://linkedin.com/in/yourusername" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition-colors"
+            aria-label="LinkedIn"
+          >
+            <FaLinkedin className="w-6 h-6" />
+          </a>
+          <a 
+            href="https://instagram.com/yourusername" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-gray-500 hover:text-pink-600 dark:text-gray-400 dark:hover:text-pink-400 transition-colors"
+            aria-label="Instagram"
+          >
+            <FaInstagram className="w-6 h-6" />
+          </a>
+          <a 
+            href="https://facebook.com/yourusername" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-gray-500 hover:text-blue-700 dark:text-gray-400 dark:hover:text-blue-500 transition-colors"
+            aria-label="Facebook"
+          >
+            <FaFacebook className="w-6 h-6" />
+          </a>
+        </div>
+        <div className="text-sm text-gray-500 dark:text-gray-400">
+          © 2025 Shamod Oshan. All rights reserved.
+        </div>
       </footer>
     </div>
   );
