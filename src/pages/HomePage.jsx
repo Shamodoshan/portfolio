@@ -6,6 +6,7 @@ import { Link, useLocation } from 'react-router-dom';
 import Section from '../components/Section';
 import ProjectCard from '../components/ProjectCard';
 import SEO from '../components/SEO';
+import Reveal from '../components/Reveal';
 
 import { projects } from '../data/projects';
 import profileImage from '../assets/profile.png';
@@ -169,7 +170,7 @@ export default function HomePage() {
             {/* About Section */}
             <Section id="about">
                 <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-                    <div className="lg:col-span-2 space-y-8">
+                    <Reveal direction="left" className="lg:col-span-2 space-y-8">
                         <div>
                             <h2 className="text-4xl md:text-5xl font-bold mb-6 dark:text-white">About Me</h2>
                             <div className="h-1 w-20 bg-purple-500 rounded-full mb-6"></div>
@@ -181,7 +182,7 @@ export default function HomePage() {
                         </div>
                         <div className="grid grid-cols-2 gap-4">
                             <div className="bg-gradient-to-br from-blue-600 to-purple-600 p-6 rounded-2xl text-white shadow-lg">
-                                <div className="text-4xl font-bold mb-1">3</div>
+                                <div className="text-4xl font-bold mb-1">{projects.length}</div>
                                 <div className="text-xs uppercase tracking-widest opacity-80">Projects</div>
                             </div>
                             <div className="bg-gradient-to-br from-purple-600 to-indigo-600 p-6 rounded-2xl text-white shadow-lg">
@@ -189,8 +190,8 @@ export default function HomePage() {
                                 <div className="text-xs uppercase tracking-widest opacity-80">{experience.label}</div>
                             </div>
                         </div>
-                    </div>
-                    <div className="flex justify-center lg:justify-end">
+                    </Reveal>
+                    <Reveal direction="right" className="flex justify-center lg:justify-end">
                         <div className="relative w-64 h-64 lg:w-72 lg:h-72 xl:w-80 xl:h-80 rounded-full overflow-hidden border-4 border-purple-500">
                             <img
                                 src={profileImage}
@@ -202,30 +203,33 @@ export default function HomePage() {
                                 }}
                             />
                         </div>
-                    </div>
+                    </Reveal>
                 </div>
             </Section>
 
             {/* Skills Section */}
             <Section id="skills" className="bg-gray-100/50 dark:bg-white/5">
-                <h2 className="text-4xl md:text-6xl font-bold mb-16 dark:text-white">My Arsenal</h2>
+                <Reveal direction="up">
+                    <h2 className="text-4xl md:text-6xl font-bold mb-16 dark:text-white text-center">My Arsenal</h2>
+                </Reveal>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl">
                     {[
-                        { title: 'Frontend', icon: <FaCode />, skills: ['Html', 'Css', 'JavaScript', 'React', 'Tailwind', 'Bootstrap'], color: 'text-blue-400' },
-                        { title: 'Backend', icon: <FaServer />, skills: ['Node.js', 'PostgreSQL', 'MySQL', 'Python'], color: 'text-green-400' },
-                        { title: 'DevOps', icon: <FaLayerGroup />, skills: ['Figma', 'Git', 'GitHub'], color: 'text-purple-400' }
+                        { title: 'Frontend', icon: <FaCode />, skills: ['Html', 'Css', 'JavaScript', 'React', 'Tailwind', 'Bootstrap'], color: 'text-blue-400', direction: 'left' },
+                        { title: 'Backend', icon: <FaServer />, skills: ['Node.js', 'PostgreSQL', 'MySQL', 'Python'], color: 'text-green-400', direction: 'up' },
+                        { title: 'DevOps', icon: <FaLayerGroup />, skills: ['Figma', 'Git', 'GitHub'], color: 'text-purple-400', direction: 'right' }
                     ].map((stack, i) => (
-                        <motion.div
-                            key={i}
-                            whileHover={{ y: -10 }}
-                            className="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-gray-200 dark:border-white/5 shadow-xl"
-                        >
-                            <div className={`text-3xl mb-6 ${stack.color}`}>{stack.icon}</div>
-                            <h3 className="text-2xl font-bold mb-4 dark:text-white">{stack.title}</h3>
-                            <div className="flex flex-wrap gap-2">
-                                {stack.skills.map(s => <span key={s} className="px-3 py-1 bg-gray-100 dark:bg-white/5 rounded-md text-sm">{s}</span>)}
-                            </div>
-                        </motion.div>
+                        <Reveal key={i} direction={stack.direction} delay={i * 0.1}>
+                            <motion.div
+                                whileHover={{ y: -10 }}
+                                className="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-gray-200 dark:border-white/5 shadow-xl h-full"
+                            >
+                                <div className={`text-3xl mb-6 ${stack.color}`}>{stack.icon}</div>
+                                <h3 className="text-2xl font-bold mb-4 dark:text-white">{stack.title}</h3>
+                                <div className="flex flex-wrap gap-2">
+                                    {stack.skills.map(s => <span key={s} className="px-3 py-1 bg-gray-100 dark:bg-white/5 rounded-md text-sm text-slate-600 dark:text-slate-400">{s}</span>)}
+                                </div>
+                            </motion.div>
+                        </Reveal>
                     ))}
                 </div>
             </Section>
@@ -233,19 +237,23 @@ export default function HomePage() {
             {/* Projects Section */}
             <Section id="projects">
                 <div className="max-w-7xl w-full mx-auto">
-                    <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
-                        <div>
-                            <h2 className="text-4xl md:text-6xl font-bold mb-4 dark:text-white">Featured Work</h2>
-                            <p className="text-gray-500 dark:text-gray-400 max-w-md">A selection of projects that showcase my passion for design and coding.</p>
+                    <Reveal direction="left">
+                        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
+                            <div>
+                                <h2 className="text-4xl md:text-6xl font-bold mb-4 dark:text-white">Featured Work</h2>
+                                <p className="text-gray-500 dark:text-gray-400 max-w-md">A selection of projects that showcase my passion for design and coding.</p>
+                            </div>
+                            <Link to="/projects" className="text-purple-500 font-semibold hover:text-purple-400 transition flex items-center gap-2 mb-2">
+                                View All Projects <HiExternalLink />
+                            </Link>
                         </div>
-                        <Link to="/projects" className="text-purple-500 font-semibold hover:text-purple-400 transition flex items-center gap-2 mb-2">
-                            View All Projects <HiExternalLink />
-                        </Link>
-                    </div>
+                    </Reveal>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {projects.slice(0, 3).map((project) => (
-                            <ProjectCard key={project.id} project={project} />
+                        {projects.slice(0, 3).map((project, i) => (
+                            <Reveal key={project.id} direction={i % 2 === 0 ? 'left' : 'right'} delay={i * 0.1}>
+                                <ProjectCard project={project} />
+                            </Reveal>
                         ))}
                     </div>
                 </div>
@@ -253,28 +261,30 @@ export default function HomePage() {
 
             {/* Contact Section */}
             <Section id="contact">
-                <div className="max-w-4xl w-full bg-white dark:bg-slate-900 border border-gray-200 dark:border-white/10 rounded-[3rem] p-10 md:p-20 text-center shadow-2xl">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6 dark:text-white">Let's build something <span className="text-purple-500">amazing</span></h2>
-                    <p className="mb-12 text-gray-500">Currently open for new opportunities and interesting projects.</p>
-                    <form className="max-w-md mx-auto space-y-4" onSubmit={onSubmit}>
-                        <input required type="text" placeholder="Name" name='name' className="w-full p-4 rounded-2xl bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 outline-none focus:border-purple-500 transition" />
-                        <input required type="email" placeholder="Email" name='email' className="w-full p-4 rounded-2xl bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 outline-none focus:border-purple-500 transition" />
-                        <textarea required placeholder="Message" rows="4" name='message' className="w-full p-4 rounded-2xl bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 outline-none focus:border-purple-500 transition" />
-                        <div className="min-h-[24px]">
-                            <p className={`text-sm font-medium ${result.includes('Success') ? 'text-green-500' : 'text-purple-500'}`}>
-                                {result}
-                            </p>
-                        </div>
-                        <motion.button
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
-                            className="w-full py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-2xl shadow-lg shadow-purple-500/20"
-                            type='submit'
-                        >
-                            Send Message
-                        </motion.button>
-                    </form>
-                </div>
+                <Reveal direction="up">
+                    <div className="max-w-4xl w-full mx-auto bg-white dark:bg-slate-900 border border-gray-200 dark:border-white/10 rounded-[3rem] p-10 md:p-20 text-center shadow-2xl">
+                        <h2 className="text-4xl md:text-5xl font-bold mb-6 dark:text-white">Let's build something <span className="text-purple-500">amazing</span></h2>
+                        <p className="mb-12 text-gray-500">Currently open for new opportunities and interesting projects.</p>
+                        <form className="max-w-md mx-auto space-y-4" onSubmit={onSubmit}>
+                            <input required type="text" placeholder="Name" name='name' className="w-full p-4 rounded-2xl bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 outline-none focus:border-purple-500 transition" />
+                            <input required type="email" placeholder="Email" name='email' className="w-full p-4 rounded-2xl bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 outline-none focus:border-purple-500 transition" />
+                            <textarea required placeholder="Message" rows="4" name='message' className="w-full p-4 rounded-2xl bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 outline-none focus:border-purple-500 transition" />
+                            <div className="min-h-[24px]">
+                                <p className={`text-sm font-medium ${result.includes('Success') ? 'text-green-500' : 'text-purple-500'}`}>
+                                    {result}
+                                </p>
+                            </div>
+                            <motion.button
+                                whileHover={{ scale: 1.02 }}
+                                whileTap={{ scale: 0.98 }}
+                                className="w-full py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-2xl shadow-lg shadow-purple-500/20"
+                                type='submit'
+                            >
+                                Send Message
+                            </motion.button>
+                        </form>
+                    </div>
+                </Reveal>
             </Section>
 
             <footer className="py-10 text-center">

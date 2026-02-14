@@ -29,9 +29,16 @@ const ProjectCard = ({ project }) => {
             </Link>
             <div className="p-6 flex-grow flex flex-col">
                 <div className="flex justify-between items-start mb-4">
-                    <Link to={`/project/${project.id || 'portfolio-website'}`}>
-                        <h3 className="text-xl font-bold dark:text-white group-hover:text-purple-500 transition">{project.title}</h3>
-                    </Link>
+                    <div className="flex items-center gap-2 flex-wrap">
+                        <Link to={`/project/${project.id || 'portfolio-website'}`}>
+                            <h3 className="text-xl font-bold dark:text-white group-hover:text-purple-500 transition">{project.title}</h3>
+                        </Link>
+                        {project.inProgress && (
+                            <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-700/50">
+                                In progress
+                            </span>
+                        )}
+                    </div>
                     <div className="flex gap-3 text-gray-400">
                         <a href={project.github || "https://github.com/Shamodoshan?tab=repositories"} className="hover:text-purple-500 transition" target="_blank" rel="noopener noreferrer"><FaGithub size={20} /></a>
                         <a href={project.link || "https://github.com/Shamodoshan?tab=repositories"} className="hover:text-purple-500 transition" target="_blank" rel="noopener noreferrer"><HiExternalLink size={22} /></a>

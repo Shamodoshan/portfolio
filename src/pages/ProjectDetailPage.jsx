@@ -22,6 +22,7 @@ export default function ProjectDetailPage() {
 
     if (!project) return null;
 
+
     const nextImage = () => {
         setActiveImageIndex((prev) => (prev + 1) % project.images.length);
     };
