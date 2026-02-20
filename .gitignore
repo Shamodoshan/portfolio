@@ -8,9 +8,14 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-dist
 dist-ssr
 *.local
+
+# Keep important SEO files but ignore other dist contents
+dist/*
+!dist/sitemap.xml
+!dist/robots.txt
+!dist/google5d4738248bb85d72.html
 
 # Editor directories and files
 .vscode/*
