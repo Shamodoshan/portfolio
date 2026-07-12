@@ -2,12 +2,12 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
 const SEO = ({ title, description, image, url, type = 'website' }) => {
-    const siteTitle = "Shamod Oshan | Full Stack Developer Portfolio";
-    const defaultDescription = "Explore the portfolio of Shamod Oshan, featuring modern web applications, UI/UX designs, and full-stack projects.";
-    const defaultImage = "https://shamodoshan.github.io/portfolio/assets/portfolio.png";
-    const siteUrl = "https://shamodoshan.github.io/portfolio/";
+    const siteTitle = "Oshan Perera | Full Stack Developer Portfolio";
+    const defaultDescription = "Explore the portfolio of Oshan Perera, featuring modern web applications, UI/UX designs, and full-stack projects.";
+    const defaultImage = "https://oshanperera03.github.io/portfolio/assets/portfolio.png";
+    const siteUrl = "https://oshanperera03.github.io/portfolio/";
 
-    const seoTitle = title ? `${title} | Shamod Oshan` : siteTitle;
+    const seoTitle = title ? `${title} | Oshan Perera` : siteTitle;
     const seoDescription = description || defaultDescription;
     const seoImage = image || defaultImage;
     const seoUrl = url ? `${siteUrl}#${url}` : siteUrl;

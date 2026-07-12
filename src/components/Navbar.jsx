@@ -24,7 +24,7 @@ const Navbar = ({ darkMode, toggleTheme }) => {
                     onClick={() => scrollToSection('home')}
                     className="text-xl font-bold tracking-tight bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent"
                 >
-                    SHAMOD OSHAN<span className="text-indigo-500">.</span>
+                    OSHAN PERERA<span className="text-indigo-500">.</span>
                 </Link>
                 <div className="hidden md:flex gap-10 text-sm font-medium">
                     {['About', 'Skills', 'Projects', 'Contact'].map((item) => (

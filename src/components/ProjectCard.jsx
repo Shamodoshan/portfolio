@@ -40,8 +40,8 @@ const ProjectCard = ({ project }) => {
                         )}
                     </div>
                     <div className="flex gap-3 text-gray-400">
-                        <a href={project.github || "https://github.com/Shamodoshan?tab=repositories"} className="hover:text-purple-500 transition" target="_blank" rel="noopener noreferrer"><FaGithub size={20} /></a>
-                        <a href={project.link || "https://github.com/Shamodoshan?tab=repositories"} className="hover:text-purple-500 transition" target="_blank" rel="noopener noreferrer"><HiExternalLink size={22} /></a>
+                        <a href={project.github || "https://github.com/oshanperera03?tab=repositories"} className="hover:text-purple-500 transition" target="_blank" rel="noopener noreferrer"><FaGithub size={20} /></a>
+                        <a href={project.link || "https://github.com/oshanperera03?tab=repositories"} className="hover:text-purple-500 transition" target="_blank" rel="noopener noreferrer"><HiExternalLink size={22} /></a>
                     </div>
                 </div>
                 <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">

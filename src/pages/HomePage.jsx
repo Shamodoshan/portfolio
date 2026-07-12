@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { HiOutlineChevronDown, HiExternalLink } from 'react-icons/hi';
-import { FaGithub, FaLinkedin, FaInstagram, FaFacebook, FaCode, FaServer, FaLayerGroup } from 'react-icons/fa';
+import { FaCode, FaServer, FaLayerGroup } from 'react-icons/fa';
 import { Link, useLocation } from 'react-router-dom';
 import Section from '../components/Section';
 import ProjectCard from '../components/ProjectCard';
 import SEO from '../components/SEO';
 import Reveal from '../components/Reveal';
+import Footer from '../components/Footer';
 
 import { projects } from '../data/projects';
-import profileImage from '../assets/profile.png';
+import profileImage from '../assets/profile.jpeg';
 
 export default function HomePage() {
     const [result, setResult] = useState("");
@@ -78,7 +79,7 @@ export default function HomePage() {
         <>{/* SEO component added here */}
             <SEO
                 title="Home"
-                description="Welcome to the portfolio of Shamod Oshan. Full Stack Developer specializing in building premium digital experiences."
+                description="Welcome to the portfolio of Oshan Perera. Full Stack Developer specializing in building premium digital experiences."
             />
             {/* Hero Section */}
             <Section id="home" className="min-h-[90vh] flex items-center justify-center relative overflow-hidden pt-20">
@@ -98,18 +99,25 @@ export default function HomePage() {
                         className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-6"
                     >
                         <span className="bg-gradient-to-r from-slate-800 to-slate-600 dark:from-white dark:to-slate-300 bg-clip-text text-transparent">
-                            Hi, I'm <span className="text-indigo-600 dark:text-indigo-400">Shamod Oshan</span>
+                            Hi, I'm <span className="text-indigo-600 dark:text-indigo-400">Oshan Perera</span>
                         </span>
                     </motion.h1>
 
+                    <motion.h3
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+                        className="text-4xl md:text-5xl lg:text-2xl font-bold leading-tight tracking-tight mb-6"
+                    >
+                        Creating Modern Web Experiences. Building a Secure Future.
+                    </motion.h3>
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
                         className="text-lg md:text-xl text-slate-600 dark:text-slate-300 leading-relaxed mb-8 max-w-3xl mx-auto"
                     >
-                        I craft exceptional digital experiences with modern web technologies,
-                        focusing on clean code, intuitive design, and seamless user interactions.
+                        I build modern, responsive web applications while preparing for a career in cybersecurity, combining clean code with a passion for continuous learning and innovation.
                     </motion.p>
 
                     <motion.div
@@ -175,9 +183,9 @@ export default function HomePage() {
                             <h2 className="text-4xl md:text-5xl font-bold mb-6 dark:text-white">About Me</h2>
                             <div className="h-1 w-20 bg-purple-500 rounded-full mb-6"></div>
                             <p className="text-lg text-gray-500 dark:text-gray-400 leading-relaxed">
-                                I'm a passionate Full Stack Developer focused on building clean, user-friendly applications.
-                                <br /><br />
-                                I love modern stacks like React, Node.js, Tailwind, and cloud platforms.
+                                I'm <b>Oshan Perera</b>, a first-year <b>Information Technology undergraduate at SLIIT</b> with a strong interest in Cybersecurity and secure technology solutions.
+                                Currently, I’m building my foundation in software development and web technologies while expanding my knowledge of information security. I’m passionate about learning new technologies, solving problems, and developing skills to create secure and innovative digital solutions.
+
                             </p>
                         </div>
                         <div className="grid grid-cols-2 gap-4">
@@ -195,7 +203,7 @@ export default function HomePage() {
                         <div className="relative w-64 h-64 lg:w-72 lg:h-72 xl:w-80 xl:h-80 rounded-full overflow-hidden border-4 border-purple-500">
                             <img
                                 src={profileImage}
-                                alt="Shamod Oshan"
+                                alt="Oshan Perera"
                                 className="w-full h-full object-cover"
                                 onError={(e) => {
                                     e.target.onerror = null;
@@ -287,17 +295,7 @@ export default function HomePage() {
                 </Reveal>
             </Section>
 
-            <footer className="py-10 text-center">
-                <div className="flex justify-center space-x-6 mb-6">
-                    <a href="https://github.com/Shamodoshan" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-white transition-colors" aria-label="GitHub"><FaGithub className="w-6 h-6" /></a>
-                    <a href="https://www.linkedin.com/in/shamodoshan" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition-colors" aria-label="LinkedIn"><FaLinkedin className="w-6 h-6" /></a>
-                    <a href="https://www.instagram.com/shamod_oshan/" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-pink-600 dark:text-gray-400 dark:hover:text-pink-400 transition-colors" aria-label="Instagram"><FaInstagram className="w-6 h-6" /></a>
-                    <a href="https://web.facebook.com/profile.php?id=100056890793433" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-blue-700 dark:text-gray-400 dark:hover:text-blue-500 transition-colors" aria-label="Facebook"><FaFacebook className="w-6 h-6" /></a>
-                </div>
-                <div className="text-sm text-gray-500 dark:text-gray-400">
-                    © 2026 Shamod Oshan. All rights reserved.
-                </div>
-            </footer>
+            <Footer />
         </>
     );
 }
