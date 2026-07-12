@@ -78,7 +78,6 @@ export default function HomePage() {
     return (
         <>{/* SEO component added here */}
             <SEO
-                title="Home"
                 description="Welcome to the portfolio of Oshan Perera. Full Stack Developer specializing in building premium digital experiences."
             />
             {/* Hero Section */}
