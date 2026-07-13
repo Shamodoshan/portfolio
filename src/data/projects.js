@@ -1,4 +1,6 @@
-import portfolioImage from '../assets/portfolio.png';
+import portfolioImage1 from '../assets/portfolio.png';
+import portfolioImage2 from '../assets/allprojects.png';
+import portfolioImage3 from '../assets/projectdetails.png';
 import stumanagementImage1 from '../assets/edumanage.png';
 import stumanagementImage2 from '../assets/editstudent.png';
 import fashionstore1 from '../assets/fashionstorehero.png';
@@ -29,10 +31,10 @@ export const projects = [
         ],
         tags: ["React", "Tailwind", "Framer Motion"],
         gradient: "from-blue-500 to-purple-500",
-        image: portfolioImage,
-        images: [portfolioImage, portfolioImage, portfolioImage], // Using existing photo as placeholders
-        github: "https://github.com/Shamodoshan/portfolio",
-        link: "https://shamodoshan.github.io/portfolio/",
+        image: portfolioImage1,
+        images: [portfolioImage1, portfolioImage2, portfolioImage3], // Using existing photo as placeholders
+        github: "https://github.com/oshanperera03/portfolio",
+        link: "https://oshanperera03.github.io/portfolio/",
         technologies: ["React", "Tailwind CSS", "Framer Motion", "React Icons", "Vite"],
         inProgress: false
     },
@@ -52,8 +54,8 @@ export const projects = [
         gradient: "from-emerald-500 to-teal-900",
         image: stumanagementImage1,
         images: [stumanagementImage1, stumanagementImage2], // Using existing photo as placeholders
-        github: "https://github.com/Shamodoshan",
-        link: "https://github.com/Shamodoshan",
+        github: "https://github.com/oshanperera03",
+        link: "https://github.com/oshanperera03",
         technologies: ["laravel", "mysql", "bootstrap"],
         inProgress: false
     },
@@ -74,8 +76,8 @@ export const projects = [
         gradient: "from-orange-500 to-red-600",
         image: fashionstore1,
         images: [fashionstore1, fashionstore2, fashionstore3, fashionstore4, fashionstore5, fashionstore6, fashionstore7, fashionstore8],
-        github: "https://github.com/Shamodoshan",
-        link: "https://github.com/Shamodoshan",
+        github: "https://github.com/oshanperera03",
+        link: "https://github.com/oshanperera03",
         technologies: ["React", "laravel", "mysql", "bootstrap"],
         inProgress: true
     },
@@ -98,8 +100,8 @@ export const projects = [
         images: [
             taskflow1, taskflow2, taskflow3
         ],
-        github: "https://github.com/Shamodoshan",
-        link: "https://github.com/Shamodoshan",
+        github: "https://github.com/oshanperera03",
+        link: "https://github.com/oshanperera03",
         technologies: [ "react", "laravel", "mysql", "bootstrap"],
         inProgress: false
     },
