@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { HiMoon, HiSun } from 'react-icons/hi';
+import logo from '../assets/oshanlogo.png';
 
 const Navbar = ({ darkMode, toggleTheme }) => {
     const location = useLocation();
@@ -24,7 +25,7 @@ const Navbar = ({ darkMode, toggleTheme }) => {
                     onClick={() => scrollToSection('home')}
                     className="text-xl font-bold tracking-tight bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent"
                 >
-                    OSHAN PERERA<span className="text-indigo-500">.</span>
+                    <img src={logo} alt="logo" className="h-10 w-auto object-contain" />
                 </Link>
                 <div className="hidden md:flex gap-10 text-sm font-medium">
                     {['About', 'Skills', 'Projects', 'Contact'].map((item) => (

@@ -13,5 +13,6 @@ export default defineConfig(({ mode }) => {
       tailwindcss(),
     ],
     base: env.NODE_ENV === 'production' ? '/portfolio/' : '/',
+    assetsInclude: ['**/*.glb'],
   }
 })

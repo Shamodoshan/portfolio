@@ -11,6 +11,7 @@ import Footer from '../components/Footer';
 
 import { projects } from '../data/projects';
 import profileImage from '../assets/profile.jpeg';
+import HeroModel from '../components/HeroModel';
 
 export default function HomePage() {
     const [result, setResult] = useState("");
@@ -90,88 +91,98 @@ export default function HomePage() {
                     }}></div>
                 </div>
 
-                <div className="max-w-4xl w-full px-6 md:px-8 lg:px-12 mx-auto text-center">
-                    <motion.h1
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-                        className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-6"
-                    >
-                        <span className="bg-gradient-to-r from-slate-800 to-slate-600 dark:from-white dark:to-slate-300 bg-clip-text text-transparent">
-                            Hi, I'm <span className="text-indigo-600 dark:text-indigo-400">Oshan Perera</span>
-                        </span>
-                    </motion.h1>
-
-                    <motion.h3
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-                        className="text-4xl md:text-5xl lg:text-2xl font-bold leading-tight tracking-tight mb-6"
-                    >
-                        Creating Modern Web Experiences. Building a Secure Future.
-                    </motion.h3>
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-                        className="text-lg md:text-xl text-slate-600 dark:text-slate-300 leading-relaxed mb-8 max-w-3xl mx-auto"
-                    >
-                        I build modern, responsive web applications while preparing for a career in cybersecurity, combining clean code with a passion for continuous learning and innovation.
-                    </motion.p>
-
-                    <motion.div
-                        className="flex flex-wrap justify-center gap-4"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-                    >
-                        <a href="#projects">
-                            <motion.button
-                                whileHover={{ scale: 1.03, y: -2 }}
-                                whileTap={{ scale: 0.98 }}
-                                className="px-8 py-3.5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-medium rounded-xl shadow-lg hover:shadow-xl hover:shadow-indigo-500/30 transition-all duration-300 flex items-center gap-2 group"
-                            >
-                                <span>View My Work</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                </svg>
-                            </motion.button>
-                        </a>
-                        <Link
-                            to="/#contact"
-                            onClick={(e) => {
-                                e.preventDefault();
-                                scrollToSection('contact');
-                            }}
+                <div className="max-w-7xl w-full px-6 md:px-8 lg:px-12 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-center text-center lg:text-left z-10">
+                    <div>
+                        <motion.h1
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+                            className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-6"
                         >
-                            <motion.button
-                                whileHover={{ scale: 1.03, y: -2 }}
-                                whileTap={{ scale: 0.98 }}
-                                className="px-8 py-3.5 border-2 border-indigo-200 dark:border-slate-700 text-indigo-700 dark:text-slate-200 font-medium rounded-xl hover:bg-indigo-50 dark:hover:bg-slate-800/50 transition-all duration-300"
-                            >
-                                Let's Talk
-                            </motion.button>
-                        </Link>
-                    </motion.div>
+                            <span className="bg-gradient-to-r from-slate-800 to-slate-600 dark:from-white dark:to-slate-300 bg-clip-text text-transparent">
+                                Hi, I'm <span className="text-indigo-600 dark:text-indigo-400">Oshan Perera</span>
+                            </span>
+                        </motion.h1>
 
-                    <motion.div
-                        className="absolute bottom-10 left-1/2 -translate-x-1/2"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
-                    >
-                        <div className="flex flex-col items-center">
-                            <span className="text-sm text-slate-500 dark:text-slate-400 mb-2">Scroll Down</span>
-                            <motion.div
-                                animate={{ y: [0, 10, 0] }}
-                                transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-                                className="w-10 h-10 rounded-full border-2 border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-400 dark:text-slate-500"
+                        <motion.h3
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+                            className="text-3xl md:text-4xl lg:text-3xl font-bold leading-tight tracking-tight mb-6"
+                        >
+                            Creating Modern Web Experiences. Building a Secure Future.
+                        </motion.h3>
+                        <motion.p
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+                            className="text-lg md:text-xl text-slate-600 dark:text-slate-300 leading-relaxed mb-8 max-w-3xl mx-auto lg:mx-0"
+                        >
+                            I build modern, responsive web applications while preparing for a career in cybersecurity, combining clean code with a passion for continuous learning and innovation.
+                        </motion.p>
+
+                        <motion.div
+                            className="flex flex-wrap justify-center lg:justify-start gap-4"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+                        >
+                            <a href="#projects">
+                                <motion.button
+                                    whileHover={{ scale: 1.03, y: -2 }}
+                                    whileTap={{ scale: 0.98 }}
+                                    className="px-8 py-3.5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-medium rounded-xl shadow-lg hover:shadow-xl hover:shadow-indigo-500/30 transition-all duration-300 flex items-center gap-2 group"
+                                >
+                                    <span>View My Work</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                    </svg>
+                                </motion.button>
+                            </a>
+                            <Link
+                                to="/#contact"
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    scrollToSection('contact');
+                                }}
                             >
-                                <HiOutlineChevronDown className="text-xl" />
-                            </motion.div>
-                        </div>
-                    </motion.div>
+                                <motion.button
+                                    whileHover={{ scale: 1.03, y: -2 }}
+                                    whileTap={{ scale: 0.98 }}
+                                    className="px-8 py-3.5 border-2 border-indigo-200 dark:border-slate-700 text-indigo-700 dark:text-slate-200 font-medium rounded-xl hover:bg-indigo-50 dark:hover:bg-slate-800/50 transition-all duration-300"
+                                >
+                                    Let's Talk
+                                </motion.button>
+                            </Link>
+                        </motion.div>
+                    </div>
+
+                    <div className='hero-model hidden lg:block w-full'>
+                        <HeroModel />
+                    </div>
                 </div>
+
+                <div className="lg:hidden w-full px-6 md:px-8 mt-8">
+                    <HeroModel />
+                </div>
+
+                <motion.div
+                    className="absolute bottom-10 left-1/2 -translate-x-1/2"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
+                >
+                    <div className="flex flex-col items-center">
+                        <span className="text-sm text-slate-500 dark:text-slate-400 mb-2">Scroll Down</span>
+                        <motion.div
+                            animate={{ y: [0, 10, 0] }}
+                            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+                            className="w-10 h-10 rounded-full border-2 border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-400 dark:text-slate-500"
+                        >
+                            <HiOutlineChevronDown className="text-xl" />
+                        </motion.div>
+                    </div>
+                </motion.div>
             </Section>
 
             {/* About Section */}
@@ -199,7 +210,7 @@ export default function HomePage() {
                         </div>
                     </Reveal>
                     <Reveal direction="right" className="flex justify-center lg:justify-end">
-                        <div className="relative w-64 h-64 lg:w-72 lg:h-72 xl:w-80 xl:h-80 rounded-full overflow-hidden border-4 border-purple-500">
+                        <div className="relative w-64 h-64 lg:w-72 lg:h-72 xl:w-80 xl:h-80 rounded-full overflow-hidden border-4 border-purple-500 shadow-lg shadow-purple-400/50">
                             <img
                                 src={profileImage}
                                 alt="Oshan Perera"
